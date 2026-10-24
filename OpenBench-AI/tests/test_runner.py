@@ -27,6 +27,8 @@ def test_evaluate_returns_summary():
     assert report["summary"]["p50_latency_ms"] >= 0
     assert report["summary"]["p95_latency_ms"] >= 0
     assert report["summary"]["examples_per_second"] > 0
+    assert len(report["dataset_sha256"]) == 64
+    assert report["run_duration_seconds"] > 0
 
 
 def test_adapter_failure_is_recorded():
