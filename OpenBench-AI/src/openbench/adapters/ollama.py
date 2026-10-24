@@ -22,6 +22,7 @@ class OllamaAdapter:
             "model": self.model,
             "messages": [{"role": "user", "content": question}],
             "stream": False,
+            "options": {"temperature": 0, "seed": 42},
         }
         request = Request(
             f"{self.base_url}/api/chat",
