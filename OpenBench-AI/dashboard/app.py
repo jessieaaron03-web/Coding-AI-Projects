@@ -88,7 +88,8 @@ st.subheader(f"Run details — {selected.get('adapter', 'unknown adapter')}")
 st.write(
     f"Created: {selected.get('created_at', 'unknown')} · "
     f"Dataset size: {selected.get('dataset_size', 0)} · "
-    f"Schema: {selected.get('schema_version', 'unknown')}"
+    f"Schema: {selected.get('schema_version', 'unknown')} · "
+    f"Dataset SHA-256: {selected.get('dataset_sha256', 'not recorded')}"
 )
 
 metrics = [
