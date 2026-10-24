@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from statistics import mean, median
 from time import perf_counter
 
+from openbench.adapters.base import ModelAdapter
 from openbench.metrics import exact_match, token_f1
 
 
@@ -19,7 +20,7 @@ def _percentile(values: list[float], percentile: float) -> float:
     return ordered[lower] + (ordered[upper] - ordered[lower]) * fraction
 
 
-def evaluate(dataset: list[dict[str, str]], adapter) -> dict:
+def evaluate(dataset: list[dict[str, str]], adapter: ModelAdapter) -> dict:
     if not dataset:
         raise ValueError("Dataset must contain at least one example.")
 
