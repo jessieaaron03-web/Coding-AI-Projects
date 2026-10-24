@@ -6,7 +6,7 @@ OpenBench AI is a small, inspectable starting point for evaluating question-answ
 
 ## Reproducible runs
 
-For comparisons, keep the dataset, prompt, model identifier, decoding settings, hardware, software versions, and run conditions fixed where possible. Warm-up and model loading can affect observed latency. Run multiple trials for serious comparisons and report variation rather than relying on a single run.
+For comparisons, keep the dataset, prompt, model identifier, decoding settings, hardware, software versions, and run conditions fixed where possible. The Ollama adapter requests temperature 0 and seed 42, but model/runtime changes can still affect output. Warm-up and model loading can affect observed latency. Run multiple trials for serious comparisons and report variation rather than relying on a single run.
 
 The current report records the adapter name, UTC timestamp, dataset size, a SHA-256 fingerprint of the canonicalized dataset records, run duration, per-example predictions, baseline scores, latency, and generation errors. The fingerprint helps identify whether the dataset records changed, but it is not a substitute for archiving the dataset and settings.
 
