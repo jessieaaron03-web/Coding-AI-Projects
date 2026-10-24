@@ -1,5 +1,7 @@
 # OpenBench AI 🧪
 
+[![Tests](https://github.com/jessieaaron03-web/Coding-AI-Projects/actions/workflows/openbench-tests.yml/badge.svg)](https://github.com/jessieaaron03-web/Coding-AI-Projects/actions/workflows/openbench-tests.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **A free, open-source evaluation lab for language models.** Run repeatable question-answering evaluations, inspect individual failures, and compare quality and latency without paying for hosted model APIs.
 
 > **Honest-results policy:** The built-in demo adapter is deterministic test data, not an LLM benchmark. The Ollama adapter can run local models on your own computer at no API cost. Scores depend on your dataset and settings; do not compare results from materially different environments as if they were controlled experiments.
