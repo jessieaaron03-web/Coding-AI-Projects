@@ -68,18 +68,13 @@ for report in reports:
 st.subheader("Run comparison")
 st.dataframe(pd.DataFrame(comparison_rows), use_container_width=True, hide_index=True)
 
-selected_label = st.selectbox(
+selected_index = st.selectbox(
     "Inspect run",
-    options=[
-        f"{report.get('_filename', 'report')} — {report.get('adapter', 'unknown')}"
-        for report in reports
-    ],
-)
-selected_index = next(
-    index
-    for index, report in enumerate(reports)
-    if f"{report.get('_filename', 'report')} — {report.get('adapter', 'unknown')}"
-    == selected_label
+    options=list(range(len(reports))),
+    format_func=lambda index: (
+        f"{reports[index].get('_filename', 'report')} — "
+        f"{reports[index].get('adapter', 'unknown')}"
+    ),
 )
 selected = reports[selected_index]
 summary = selected["summary"]
