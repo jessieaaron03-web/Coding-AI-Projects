@@ -3,7 +3,7 @@ from collections import Counter
 
 def normalize(text: str) -> str:
     """Normalize whitespace and case for a simple baseline comparison."""
-    return re.sub(r"\\s+", " ", text.strip().lower())
+    return re.sub(r"\s+", " ", text.strip().lower())
 
 def exact_match(prediction: str, reference: str) -> float:
     return float(normalize(prediction) == normalize(reference))
