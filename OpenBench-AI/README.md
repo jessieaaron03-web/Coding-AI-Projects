@@ -47,7 +47,7 @@ The demo adapter makes no network calls and is useful for checking the pipeline,
    openbench run --adapter ollama --model llama3.2:3b --dataset data/sample_qa.jsonl --output results/ollama.json --csv results/ollama.csv
    ```
 
-No hosted API key is required. Local model downloads require disk space and local compute. You can configure the server with `--base-url` or `OPENBENCH_OLLAMA_URL`, and choose a default model with `OPENBENCH_OLLAMA_MODEL`.
+No hosted API key is required. The adapter requests temperature 0 and seed 42 to reduce sampling variability, although results can still vary across model versions and runtime environments. Local model downloads require disk space and local compute. You can configure the server with `--base-url` or `OPENBENCH_OLLAMA_URL`, and choose a default model with `OPENBENCH_OLLAMA_MODEL`.
 
 ## Explore results
 
