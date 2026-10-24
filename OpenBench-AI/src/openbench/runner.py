@@ -1,3 +1,5 @@
+import hashlib
+import json
 from datetime import datetime, timezone
 from statistics import mean, median
 from time import perf_counter
@@ -20,6 +22,14 @@ def _percentile(values: list[float], percentile: float) -> float:
 def evaluate(dataset: list[dict[str, str]], adapter) -> dict:
     if not dataset:
         raise ValueError("Dataset must contain at least one example.")
+
+    canonical_dataset = json.dumps(
+        dataset,
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    dataset_sha256 = hashlib.sha256(canonical_dataset).hexdigest()
 
     results = []
     run_start = perf_counter()
@@ -51,10 +61,12 @@ def evaluate(dataset: list[dict[str, str]], adapter) -> dict:
     latencies = [row["latency_ms"] for row in results]
     return {
         "project": "OpenBench AI",
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "created_at": datetime.now(timezone.utc).isoformat(),
         "adapter": adapter.name,
         "dataset_size": len(results),
+        "dataset_sha256": dataset_sha256,
+        "run_duration_seconds": round(total_seconds, 6),
         "summary": {
             "exact_match": round(mean(row["exact_match"] for row in results), 4),
             "token_f1": round(mean(row["token_f1"] for row in results), 4),
