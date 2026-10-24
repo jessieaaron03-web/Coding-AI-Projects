@@ -38,6 +38,7 @@ def test_ollama_adapter_posts_chat_request(monkeypatch):
     assert seen["url"] == "http://localhost:11434/api/chat"
     assert seen["payload"]["model"] == "tiny-model"
     assert seen["payload"]["stream"] is False
+    assert seen["payload"]["options"] == {"temperature": 0, "seed": 42}
     assert seen["payload"]["messages"][0]["content"] == "Capital of France?"
 
 
